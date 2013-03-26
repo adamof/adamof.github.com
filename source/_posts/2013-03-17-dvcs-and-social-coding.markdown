@@ -5,8 +5,6 @@ date: 2013-03-09 12:59
 comments: true
 categories: 
 ---
-_**Disclamer**: This is a blogpost for an university assignment. While I have written it myself and I agree with everything in it, it was a bit pressured by time constraints and might contain some debatable points._
-_Thanks!_
 
 This blog entry should be considered as a supplement to Sebastien Auvray’s [Distributed Version Control Systems: A Not-So-Quick Guide Through](http://www.infoq.com/articles/dvcs-guide). The author concentrates on the technical parameters of the distributed version control systems (DVCS), while this is fine for someone looking to make a decision which implementation to choose, he is missing a major aspect of DVCS- the sociability. I will briefly discuss some sample workflows and discuss how the introduction of DVCS helped Open Source projects, by lowering the entry barrier and making collaboration easier. Some even based their whole business model around socialising coding, like Github
 

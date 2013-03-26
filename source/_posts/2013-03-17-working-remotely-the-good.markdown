@@ -5,8 +5,6 @@ date: 2013-03-17 11:55
 comments: true
 categories: 
 ---
-_**Disclamer**: This is a blogpost for an university assignment. While I have written it myself and I agree with everything in it, it was a bit pressured by time constraints and might contain some debatable points. Please feel free to leave a comment on the [HN post](https://news.ycombinator.com/item?id=5389000)._
-_Thanks!_
 
 > Don't you just wish you could work from home in your pajamas?
 
@@ -77,7 +75,11 @@ Working whenever and wherever you want is great, but with great power comes grea
 - - - 
 #### *References*
 [http://beuno.com.ar/archives/303](http://beuno.com.ar/archives/303)
+
 [http://gigaom.com/2012/03/26/tales-from-the-trenches-github/](http://gigaom.com/2012/03/26/tales-from-the-trenches-github/)
+
 [http://www.teleworkresearchnetwork.com/telecommuting-statistics](http://www.teleworkresearchnetwork.com/telecommuting-statistics)
+
 [http://lanceennen.com/blog/posts/remote-development-to-be-there-or-not-to-be](http://lanceennen.com/blog/posts/remote-development-to-be-there-or-not-to-be)
+
 [http://en.wikipedia.org/wiki/Telecommuting](http://en.wikipedia.org/wiki/Telecommuting)
