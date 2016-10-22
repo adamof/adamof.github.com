@@ -1,0 +1,34 @@
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}
+
+.preview {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  margin: 3px;
+  display: inline-block;
+}
+
+#preview-holder {
+  display: inline-block;
+}
+
+.cropper {
+  max-height: 300px;
+}
+
+.icon {
+  width: 50px;
+  position: absolute;
+}
+
+.fb_like {
+  bottom: 20px;
+  left: 153px;
+}
+
+.fb_love {
+  bottom: 20px;
+  left: 456px;
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yolo</title>
+  <!-- Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Bootstrap END -->
+
+  <!-- CropperJS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.js"></script>
+  <!-- CropperJS END -->
+
+  <!-- html2img -->
+  <script type="text/javascript" src="js/html2canvas.js"></script>
+  <script type="text/javascript" src="js/canvas2image.js"></script>
+  <!-- html2img END -->
+</head>
+<body>
+  <div class="container">
+    <div class="row" style="background-color: #C0C0C0;">
+      <div class="col-md-5">
+        <label class="btn btn-primary" for="inputImage1" title="Upload image file">
+          <input type="file" class="sr-only" id="inputImage1" name="file" accept="image/*">
+          <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+            <span class="fa fa-upload">Upload</span>
+          </span>
+        </label>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <label class="btn btn-primary" for="inputImage2" title="Upload image file">
+          <input type="file" class="sr-only" id="inputImage2" name="file" accept="image/*">
+          <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+            <span class="fa fa-upload">Upload</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="row" style="background-color: #D3D3D3;">
+      <div class="col-md-5">
+        <div class="cropper">
+          <img id="image1" src="soja_gluharche.jpg">
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <div class="cropper">
+          <img id="image2" src="soja_phone_case.jpg">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-2">
+        <div id="preview-holder">
+          <div class="preview" id="preview1">
+          </div>
+          <div class="preview" id="preview2"></div>
+          <img src="fb_like.png" class="fb_like icon">
+          <img src="fb_love.png" class="fb_love icon">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <input type="button" id="btnSave" value="Save PNG"/>
+
+      <div id="img-out"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var image1 = document.getElementById('image1');
+    var image2 = document.getElementById('image2');
+
+    var cropper1 = new Cropper(image1, {
+      aspectRatio: 1 / 1,
+      background: false,
+      preview: '#preview1',
+      zoomable: false,
+      crop: function(e) {
+      }
+    });
+    var cropper2 = new Cropper(image2, {
+      aspectRatio: 1 / 1,
+      background: false,
+      preview: '#preview2',
+      zoomable: false,
+      crop: function(e) {
+      }
+    });
+
+    // Import image
+    var inputImage1 = document.getElementById('inputImage1');
+    var URL = window.URL || window.webkitURL;
+    var blobURL;
+
+    if (URL) {
+      inputImage1.onchange = function () {
+        var files = this.files;
+        var file;
+
+        if (cropper1 && files && files.length) {
+          file = files[0];
+
+          if (/^image\/\w+/.test(file.type)) {
+            blobURL = URL.createObjectURL(file);
+            cropper1.reset().replace(blobURL);
+            inputImage1.value = null;
+          } else {
+            window.alert('Please choose an image file.');
+          }
+        }
+      };
+    } else {
+      inputImage1.disabled = true;
+      inputImage1.parentNode.className += ' disabled';
+    }
+
+    // Import image
+    var inputImage2 = document.getElementById('inputImage2');
+    var URL = window.URL || window.webkitURL;
+    var blobURL;
+
+    if (URL) {
+      inputImage2.onchange = function () {
+        var files = this.files;
+        var file;
+
+        if (cropper2 && files && files.length) {
+          file = files[0];
+
+          if (/^image\/\w+/.test(file.type)) {
+            blobURL = URL.createObjectURL(file);
+            cropper2.reset().replace(blobURL);
+            inputImage2.value = null;
+          } else {
+            window.alert('Please choose an image file.');
+          }
+        }
+      };
+    } else {
+      inputImage2.disabled = true;
+      inputImage2.parentNode.className += ' disabled';
+    }
+
+    $("#btnSave").click(function() {
+      html2canvas($("#preview-holder"), {
+        onrendered: function(canvas) {
+          theCanvas = canvas;
+          document.body.appendChild(canvas);
+
+          // Convert and download as image
+          Canvas2Image.saveAsPNG(canvas);
+          $("#img-out").append(canvas);
+          // Clean up
+          //document.body.removeChild(canvas);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
